@@ -1,6 +1,16 @@
 import pytest
 
-from expenses import add_expense, categories, total_for
+from expenses import DEFAULT_CATEGORIES, add_expense, categories, total_for
+
+
+def test_default_categories_include_health():
+    assert "health" in DEFAULT_CATEGORIES
+
+
+def test_health_expense_can_be_added_and_totaled():
+    expenses = []
+    add_expense(expenses, 50, "health")
+    assert total_for(expenses, "health") == 50
 
 
 def test_add_expense_appends_valid_expense():
