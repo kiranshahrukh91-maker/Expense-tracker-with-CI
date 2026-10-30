@@ -6,3 +6,7 @@ def add_expense(expenses, amount, category):
 
 def total_for(expenses, category):
     return sum(e["amount"] for e in expenses if e["category"] == category)
+
+
+def categories(expenses):
+    return sorted({e["category"] for e in expenses})

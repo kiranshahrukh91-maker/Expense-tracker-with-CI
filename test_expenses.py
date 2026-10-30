@@ -1,6 +1,6 @@
 import pytest
 
-from expenses import add_expense, total_for
+from expenses import add_expense, categories, total_for
 
 
 def test_add_expense_appends_valid_expense():
@@ -62,3 +62,21 @@ def test_total_for_two_food_expenses():
     add_expense(expenses, 20, "food")
     add_expense(expenses, 30, "food")
     assert total_for(expenses, "food") == 50
+
+
+def test_categories_returns_sorted_unique():
+    expenses = []
+    add_expense(expenses, 10, "travel")
+    add_expense(expenses, 20, "food")
+    add_expense(expenses, 5, "travel")
+    assert categories(expenses) == ["food", "travel"]
+
+
+def test_categories_empty_list():
+    assert categories([]) == []
+
+
+def test_categories_does_not_modify_input():
+    expenses = [{"amount": 10, "category": "food"}]
+    categories(expenses)
+    assert expenses == [{"amount": 10, "category": "food"}]
