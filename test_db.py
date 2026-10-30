@@ -13,12 +13,12 @@ def test_saved_expenses_are_loaded_in_order():
     ]
 
 
-def test_db_total_for_returns_max_food():
+def test_db_total_for_sums_food():
     conn = connect(":memory:")
     save_expense(conn, 20, "food")
     save_expense(conn, 30, "food")
     save_expense(conn, 15, "travel")
-    assert db_total_for(conn, "food") == 30
+    assert db_total_for(conn, "food") == 50
 
 
 def test_invalid_amount_is_not_saved():
