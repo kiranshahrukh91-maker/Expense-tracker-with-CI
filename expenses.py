@@ -1,3 +1,6 @@
+DEFAULT_CATEGORIES = ["food", "travel", "health"]
+
+
 def add_expense(expenses, amount, category):
     if amount <= 0:
         raise ValueError("Amount must be more than 0")
