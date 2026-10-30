@@ -1,6 +1,6 @@
 import sqlite3
 
-from expenses import add_expense
+from expenses import add_expense, total_for
 
 DEFAULT_DB = "expenses.db"
 
@@ -35,5 +35,4 @@ def load_expenses(conn):
 
 
 def db_total_for(conn, category):
-    amounts = [e["amount"] for e in load_expenses(conn) if e["category"] == category]
-    return max(amounts, default=0)
+    return total_for(load_expenses(conn), category)
